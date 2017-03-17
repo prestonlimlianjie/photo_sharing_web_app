@@ -1,0 +1,30 @@
+<!doctype html>
+
+<body ng-app="myApp">
+
+<div ng-controller="FavoritesController">
+
+<md-subheader class="md-primary">Favorites</md-subheader>
+<md-list>
+<md-list-item ng-repeat="favObject in main.favArrayModel.favArray">
+	<div>
+        <div>
+        <!-- Trigger model window -->
+    	<md-button ng-click="showImage($event, favObject.file_name, favObject.date_time, favObject.created_date_time)" class="md-raised">
+    			<img ng-src="images/{{favObject.file_name}}" height=100em width=100em/>
+      		</md-button>
+  		</div>
+
+        <!-- Remove favorite -->
+        <md-button ng-click="cancelButtonClick(favObject.photo_id)">
+        	<i class="material-icons">cancel</i>
+    	</md-button>
+        </div>
+    </div>
+    <br>
+
+</md-list-item>
+</md-list>
+
+</div>
+</body>

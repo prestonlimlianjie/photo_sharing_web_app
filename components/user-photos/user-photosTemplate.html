@@ -1,0 +1,45 @@
+<!doctype html>
+
+<md-list>
+
+<md-subheader class="md-primary">Photos</md-subheader>
+<md-list-item ng-repeat="photoObject in main.photos | orderBy: ['-likes.length', '-date_time']">
+    <div>
+        <div>
+        <img ng-src="images/{{photoObject.file_name}}" height=50% width=50%/><br>
+        <md-button ng-click="likeButtonClick(photoObject._id)">
+            <i class="material-icons">thumb_up</i>
+            <div ng-if="photoObject.isLiked">Unlike</div>
+            <div ng-if="!photoObject.isLiked">Like</div>
+        </md-button>
+        {{photoObject.likes.length}} likes
+
+        <md-button ng-click="favoritesButtonClick(photoObject._id)">
+            <i ng-if="photoObject.isFavorited" class="material-icons">favorite</i>
+            <i ng-if="!photoObject.isFavorited" class="material-icons">favorite_border</i>
+        </md-button>
+
+        <md-subheader>Created: {{photoObject.date_time}} </md-subheader>
+        </div>
+        <md-list ng-repeat="commentObject in photoObject.comments | orderBy:commentObject.date_time">
+        <div>
+            <md-button href="#users/{{commentObject.user._id}}"> {{commentObject.user.first_name}} {{commentObject.user.last_name}}</md-button>
+        </div>
+        <div>
+            <md-subheader>Commented: {{commentObject.date_time}} </md-subheader>
+        </div>
+        <div>
+            <md-content>{{commentObject.comment}}</md-content>
+        </div>
+        </md-list>
+        <form>
+        <label>Add comment <input type="text" ng-model="main.commentArray[$index]"/></label><br/>
+        <md-button ng-click="commentButtonClick(photoObject._id, $index)">Post</md-button>
+
+        </form>
+    </div>
+</md-list-item>
+</md-list>
+
+<br>
+

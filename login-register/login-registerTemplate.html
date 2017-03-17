@@ -1,0 +1,26 @@
+<!doctype html>
+
+<body ng-app="myApp">
+
+<div ng-controller="LoginRegisterController">
+<form ng-if="!main.loggedIn" name="form" ng-submit="vm.login()" role="form">
+<h2>Login</h2>
+<label>Username <input type="text" ng-model="main.username"/></label><br/>
+<label>Password <input type="password" ng-model="main.password"/></label><br/>
+<md-button ng-if="!main.register" ng-click="buttonClick(login_button)" class='login_button'>Login</md-button>
+<md-button ng-if="!main.register" ng-click="regButtonClick(register_button)">Register</md-button>
+
+<label ng-if="main.register">First Name <input ng-if="main.register" type="text" ng-model="main.firstname"/></label><br/>
+<label ng-if="main.register">Last Name <input ng-if="main.register" type="text" ng-model="main.lastname"/></label><br/>
+<label ng-if="main.register">Location <input ng-if="main.register" type="text" ng-model="main.location"/></label><br/>
+<label ng-if="main.register">Description <input ng-if="main.register" type="text" ng-model="main.description"/></label><br/>
+<label ng-if="main.register">Occupation <input ng-if="main.register" type="text" ng-model="main.occupation"/></label><br/>
+
+
+<br/>
+<md-button ng-if="main.register" ng-click="registerUser(register_button)">Submit Registration</md-button>
+
+</form>
+{{errormsg}}
+</div>
+</body>

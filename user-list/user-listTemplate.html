@@ -1,0 +1,15 @@
+<!doctype html>
+<md-list>
+	<md-subheader class="md-primary">Friends</md-subheader>
+	<md-list-item ng-repeat="user in userList">
+		<md-button class="md-raised" href="#users/{{user._id}}"> {{user.first_name}} {{user.last_name}}</md-button>
+		<br />
+	<md-subheader>{{user.lastActivityObject.lastActivity}}</md-subheader>
+	<img ng-src="images/{{user.lastActivityObject.lastPhotoName}}" height="10%" width="10%" ng-if='user.lastActivityObject.lastWasPhoto'/>
+	</md-list-item>
+
+	<md-subheader class="md-primary">Your Last Activity</md-subheader>
+	<md-subheader>{{main.lastActivity}}</md-subheader>
+	<img ng-src="images/{{main.lastPhotoName}}" height="40%"" width="40%" ng-if='main.lastWasPhoto'/>
+<md-list>
+
